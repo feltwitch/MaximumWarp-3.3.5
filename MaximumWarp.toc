@@ -1,0 +1,10 @@
+## Interface: 30300
+## Title: MaximumWarp
+## Author: liliela
+## Notes: Automatically equips Riding Crop and more
+## SavedVariables: MaximumWarpDB
+## Version: 1.0
+
+embeds.xml
+
+MaximumWarp.lua

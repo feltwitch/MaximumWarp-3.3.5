@@ -1,0 +1,28 @@
+{
+  "Lua.diagnostics.globals": [
+    "GetTime",
+    "GetItemInfo",
+    "LibStub",
+    "InCombatLockdown",
+    "UnitIsDeadOrGhost",
+    "IsInInstance",
+    "IsMounted",
+    "UnitOnTaxi",
+    "GetInventoryItemID",
+    "EquipItemByName",
+    "GetItemCount",
+    "NUM_BAG_SLOTS",
+    "GetContainerNumSlots",
+    "GetContainerItemLink",
+    "IsEquippedItem",
+    "CreateFrame",
+    "UIParent",
+    "IsAltKeyDown",
+    "DEFAULT_CHAT_FRAME",
+    "UnitName",
+    "GetRealmName",
+    "UnitClass",
+    "UnitRace",
+    "UnitFactionGroup"
+  ]
+}
