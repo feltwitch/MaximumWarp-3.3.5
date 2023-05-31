@@ -1,3 +1,7 @@
+local Ace = LibStub("AceAddon-3.0")
+local AceConfig = LibStub("AceConfig-3.0")
+local AceConfigDialog = LibStub("AceConfigDialog-3.0")
+
 ----
 -- Constants and data
 
@@ -124,10 +128,7 @@ local trinketMounted = nil
 ----
 -- Addon initialization
 
-local Ace = LibStub("AceAddon-3.0")
 MaximumWarp = Ace:NewAddon(NAMESPACE, "AceConsole-3.0", "AceEvent-3.0")
-local AceConfig = LibStub("AceConfig-3.0")
-local AceConfigDialog = LibStub("AceConfigDialog-3.0")
 
 MaximumWarpButton = CreateFrame("Button", "MaximumWarpButton", UIParent, "ActionButtonTemplate")
 -- Trying to access `.icon` doesn't seem to work with ActionButtonTemplate in
