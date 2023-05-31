@@ -1,4 +1,5 @@
 local Ace = LibStub("AceAddon-3.0")
+local AceDB = LibStub("AceDB-3.0")
 local AceConfig = LibStub("AceConfig-3.0")
 local AceConfigDialog = LibStub("AceConfigDialog-3.0")
 
@@ -149,7 +150,7 @@ local function log(level, message)
 end
 
 function MaximumWarp:OnInitialize()
-  self.db = LibStub("AceDB-3.0"):New("MaximumWarpDB", maximumWarpDBDefaults)
+  self.db = AceDB:New("MaximumWarpDB", maximumWarpDBDefaults)
   AceConfig:RegisterOptionsTable(NAMESPACE, maximumWarpOptions, {"maximumwarp", "mw"})
   AceConfigDialog:AddToBlizOptions(NAMESPACE)
 end
