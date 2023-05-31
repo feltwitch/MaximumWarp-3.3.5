@@ -2,6 +2,8 @@
 -- Constants and data
 
 local ADDON_VERSION = "1.0"
+local NAMESPACE = "MaximumWarp"
+
 local THROTTLE_THRESHOLD = 0.3
 local LOG_TRACE = "TRACE"
 local LOG_DEBUG = "DEBUG"
@@ -123,8 +125,9 @@ local trinketMounted = nil
 -- Addon initialization
 
 local Ace = LibStub("AceAddon-3.0")
-MaximumWarp = Ace:NewAddon("MaximumWarp", "AceConsole-3.0", "AceEvent-3.0")
+MaximumWarp = Ace:NewAddon(NAMESPACE, "AceConsole-3.0", "AceEvent-3.0")
 local AceConfig = LibStub("AceConfig-3.0")
+local AceConfigDialog = LibStub("AceConfigDialog-3.0")
 
 MaximumWarpButton = CreateFrame("Button", "MaximumWarpButton", UIParent, "ActionButtonTemplate")
 -- Trying to access `.icon` doesn't seem to work with ActionButtonTemplate in
@@ -146,7 +149,8 @@ end
 
 function MaximumWarp:OnInitialize()
   self.db = LibStub("AceDB-3.0"):New("MaximumWarpDB", maximumWarpDBDefaults)
-  AceConfig:RegisterOptionsTable("MaximumWarp", maximumWarpOptions, {"maximumwarp", "mw"})
+  AceConfig:RegisterOptionsTable(NAMESPACE, maximumWarpOptions, {"maximumwarp", "mw"})
+  AceConfigDialog:AddToBlizOptions(NAMESPACE)
 end
 
 function MaximumWarp:OnEnable()
