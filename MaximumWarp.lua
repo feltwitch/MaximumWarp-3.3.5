@@ -1,6 +1,7 @@
 ----
 -- Constants and data
 
+local ADDON_VERSION = "1.0"
 local THROTTLE_THRESHOLD = 0.3
 local LOG_TRACE = "TRACE"
 local LOG_DEBUG = "DEBUG"
@@ -48,10 +49,14 @@ local maximumWarpDBDefaults = {
 
     ----
     -- Internals
-    version = "1.0",
+    version = ADDON_VERSION,
+  },
+  char = {
     [SLOT_HANDS .. "Normal"] = nil,
     [SLOT_FEET .. "Normal"] = nil,
     [SLOT_TRINKET .. "Normal"] = nil,
+
+    version = ADDON_VERSION,
   }
 }
 
@@ -249,14 +254,14 @@ end
 -- Addon logic
 
 function MaximumWarp:GetNormal(slot)
-  if self.db ~= nil and self.db.global ~= nil then
-    return self.db.global[slot .. "Normal"]
+  if self.db ~= nil and self.db.char ~= nil then
+    return self.db.char[slot .. "Normal"]
   end
 end
 
 function MaximumWarp:SetNormal(slot, item)
-  if self.db ~= nil and self.db.global ~= nil then
-    self.db.global[slot .. "Normal"] = item
+  if self.db ~= nil and self.db.char ~= nil then
+    self.db.char[slot .. "Normal"] = item
     log(LOG_DEBUG, "Set normal " .. slot .. " to " .. getItemLink(item))
   end
 end
