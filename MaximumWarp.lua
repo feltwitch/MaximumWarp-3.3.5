@@ -37,7 +37,7 @@ local TRINKET_TO_ICON = {
 }
 
 local maximumWarpDBDefaults = {
-  global = {
+  profile = {
     enable = false,
     logLevel = LOG_ERROR,
 
@@ -267,8 +267,8 @@ function MaximumWarp:SetNormal(slot, item)
 end
 
 function MaximumWarp:GetOption(option)
-  if self.db ~= nil and self.db.global ~= nil then
-    local value = self.db.global[option]
+  if self.db ~= nil and self.db.profile ~= nil then
+    local value = self.db.profile[option]
     return value
   else
     log(LOG_ERROR, "Can't read option [" .. option .. "] - using default.")
@@ -278,8 +278,8 @@ end
 
 function MaximumWarp:SetOption(option, value)
   log(LOG_TRACE, "Trying to set [" .. option .. "] to [" .. tostring(value) .. "]")
-  if self.db ~= nil and self.db.global ~= nil then
-    self.db.global[option] = value
+  if self.db ~= nil and self.db.profile ~= nil then
+    self.db.profile[option] = value
     MaximumWarp:Print("[" .. option .. "] set to [" .. tostring(value) .. "]")
   else
     log(LOG_ERROR, "Options not ready - can not set option.")
