@@ -220,6 +220,39 @@ function MaximumWarp:ZONE_CHANGED_NEW_AREA()
   MaximumWarp:EquipNormalGear()
 end
 
+
+
+local gearSet = {
+  gear = {
+    [SLOT_TRINKET] = RIDING_TRINKET_IDS,
+    [SLOT_HANDS] = function () return false end
+  },
+  eventToGear = {
+    UNIT_AURA = {
+      predicate = function ()
+        return unitId == "player" and IsMounted() and not UnitOnTaxi("player")
+      end,
+      gear = {
+        [SLOT_TRINKET] = {
+          pickFirstFound = RIDING_TRINKET_IDS
+        },
+        [SLOT_HANDS] = {
+          conditions = {
+            [SLOT_TRINKET] = TRINKET_CARROT_ID
+          },
+          findByEnchant = 930
+        },
+        [SLOT_FEET] = {
+          conditions = {
+            [SLOT_TRINKET] = TRINKET_CARROT_ID
+          },
+          findByEnchant = 464
+        }
+      }
+    }
+  }
+}
+
 function MaximumWarp:HandlePotentialEquipEvent()
   log(LOG_TRACE, "Entered HandlePotentialEquipEvent.")
 
