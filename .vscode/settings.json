@@ -23,6 +23,18 @@
     "GetRealmName",
     "UnitClass",
     "UnitRace",
-    "UnitFactionGroup"
+    "UnitFactionGroup",
+    "SELECTED_CHAT_FRAME",
+    "ACCEPT",
+    "CANCEL",
+    "StaticPopupDialogs",
+    "StaticPopup_Show",
+    "InterfaceOptions_AddCategory",
+    "NORMAL_FONT_COLOR",
+    "GameFontHighlight",
+    "GameFontHighlightLarge",
+    "GameFontHighlightSmall",
+    "SlashCmdList",
+    "hash_SlashCmdList"
   ]
 }
