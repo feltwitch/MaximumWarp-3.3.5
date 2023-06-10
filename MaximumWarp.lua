@@ -246,12 +246,17 @@ end
 ---Returns an item link by itemID, or nil if the itemID is nil.
 ---@param itemID number | nil
 ---@return string | nil
-local function getItemLink(itemID)
+local function getItemLinkOrID(itemID)
   if (itemID == nil) then
     return "nil itemID"
   end
 
   local _, link = GetItemInfo(itemID)
+
+  if link == nil then
+    link = "nil (" .. itemID .. ")"
+  end
+
   return link
 end
 
@@ -268,7 +273,7 @@ end
 function MaximumWarp:SetNormal(slot, item)
   if self.db ~= nil and self.db.char ~= nil then
     self.db.char[slot .. "Normal"] = item
-    log(LOG_DEBUG, "Set normal " .. slot .. " to " .. getItemLink(item))
+    log(LOG_DEBUG, "Set normal " .. slot .. " to " .. getItemLinkOrID(item))
   end
 end
 
@@ -347,7 +352,7 @@ local function safeEquipItem(slot, id, expectedEquippedID)
   end
 
   if (shouldEquip and not shouldThrottle) then
-    log(LOG_INFO, "Equipping item " .. getItemLink(id))
+    log(LOG_INFO, "Equipping item " .. getItemLinkOrID(id))
     EquipItemByName(id, slot)
     lastEquipTime = now
     lastEquippedItemId[slot] = id
@@ -409,7 +414,7 @@ end
 
 function MaximumWarp:SearchInventory()
   for _, trinket in ipairs(RIDING_TRINKET_IDS) do
-    local link = getItemLink(trinket)
+    local link = getItemLinkOrID(trinket)
     log(LOG_TRACE, "Testing for trinket: " .. link)
     if isItemInInventory(trinket) then
       log(LOG_DEBUG, "Found trinket: " .. link)
@@ -437,8 +442,8 @@ function MaximumWarp:SearchInventory()
   if trinketMounted == TRINKET_CARROT_ID then
     MaximumWarp:CacheMountedHandsAndFeet()
 
-    log(LOG_INFO, "Hands item used for riding: " .. getItemLink(handsMounted))
-    log(LOG_INFO, "Feet item used for riding: " .. getItemLink(feetMounted))
+    log(LOG_INFO, "Hands item used for riding: " .. getItemLinkOrID(handsMounted))
+    log(LOG_INFO, "Feet item used for riding: " .. getItemLinkOrID(feetMounted))
   end
 end
 
